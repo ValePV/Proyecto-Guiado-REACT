@@ -37,7 +37,8 @@ constructor() {
       type : 'setCity',
       value : city 
     }*/
-    store.dispatch(setCity(city));
+    //store.dispatch(setCity(city));
+    this.props.setCity(city);
 	}
     render() {
         const { city } = this.state;
@@ -86,8 +87,10 @@ constructor() {
         );
     }
 }
-
-const mapDispacthToPropsActions = () => {};
+// esta función nos deja trabajar con las acciones
+const mapDispacthToPropsActions = (dispatch) => ({
+  setCity: value => dispatch(setCity(value))
+});
 
 const AppConnected = connect(null, mapDispacthToPropsActions)(App);
 
