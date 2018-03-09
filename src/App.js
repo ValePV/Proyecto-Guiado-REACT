@@ -20,6 +20,7 @@ const cities = [
 	'Rio de Janeiro,br'
 ];
 
+
 class App extends Component {
 constructor() {
   super();
@@ -86,4 +87,8 @@ constructor() {
     }
 }
 
-export default App;
+const mapDispacthToPropsActions = () => {};
+
+const AppConnected = connect(null, mapDispacthToPropsActions)(App);
+
+export default AppConnected;
