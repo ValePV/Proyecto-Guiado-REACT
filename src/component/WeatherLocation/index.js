@@ -5,6 +5,7 @@ import Location from './Location';
 import WeatherData from './WeatherData/index.js';
 /*import {CLOUD, CLOUDY, SUN, RAIN, SNOW, WINDY} from './../../constant/weather.js';*/
 import transformWeather from './../../services/transformWeather'
+import './style.css';
 
 const api_key = '9bfed3231341c46256bd60b3cf4e9009';
 //const city = 'Santiago,scl';
@@ -78,9 +79,11 @@ class WeatherLocation extends Component {
   }*/
 	render = () => {
     console.log('Render');
+    const { onWeatherLocationClick } = this.props;
     const {city, data} = this.state;
     return(
-      <div>
+      <div className='weatherLocation' onClick={
+        onWeatherLocationClick}>
         <Location city = {city}/>
         { data !== null ? <WeatherData data = {data}/>
           : <CircularProgress size={60} thickness={7} />
@@ -93,7 +96,9 @@ class WeatherLocation extends Component {
 
 WeatherLocation.propTypes = {
   city: PropTypes.string,
+  onWeatherLocationClick : PropTypes.func,
 }
+
 
 export default WeatherLocation;
 

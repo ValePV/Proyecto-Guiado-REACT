@@ -20,7 +20,7 @@ const Location = (props) => {
 */
 
 const Location = ({city}) => (
-  <div>
+  <div className='locationCont'>
     <h1>{city}</h1>
   </div>
 
