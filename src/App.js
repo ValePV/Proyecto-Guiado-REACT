@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { createStore } from 'redux';
+import { connect } from 'react-redux';
+// import { createStore } from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Paper from 'material-ui/Paper';
@@ -7,7 +8,7 @@ import AppBar from 'material-ui/AppBar';
 import LocationList from './component/LocationList';
 import ForecastExtended from './component/ForecastExtended';
 import { setCity } from './actions';
-import { store } from './store';
+// import { store } from './store';
 import './App.css';
 
 const cities = [
