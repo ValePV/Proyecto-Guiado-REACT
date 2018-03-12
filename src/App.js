@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
 // import { createStore } from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar';
-import LocationList from './component/LocationList';
-import ForecastExtended from './component/ForecastExtended';
-import { setCity } from './actions';
+import LocationListContainer from './containers/LocationListContainer';
+import ForecastExtendedContainer from './containers/ForecastExtendedContainer';
+// import { setCity } from './actions';
 // import { store } from './store';
 import './App.css';
 
@@ -28,52 +29,33 @@ constructor() {
     city : null
   }
 }
-
-	handleSelectionLocation = (city) => {
-    this.setState({city});
-		console.log(`handleSelectionLocation ${city}`);
-    /*
-    const action = {
-      type : 'setCity',
-      value : city 
-    }*/
-    //store.dispatch(setCity(city));
-    this.props.setCity(city);
-	}
-    render() {
-        const { city } = this.state;
-        return ( 
-         	<MuiThemeProvider>
-            <Grid>
-              <Row>
-                <Col xs={12}>
-                  <AppBar title='Weather Location'/>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12} md={6}>  
-                  <LocationList
-                    cities = { cities }
-                    onSelectedLocation = { this. handleSelectionLocation}>
-                  </LocationList>
-                </Col>
-                <Col xs={12} md={6}>
-                  <Paper zDepth={4}>
-                    <div className = 'detail'>
-                      {
-                        city === null ? null
-                        : <ForecastExtended
-                        city = { city }>
-                        
-                        </ForecastExtended>
-                      }
-                    </div>
-                  </Paper>
-                </Col>
-              </Row>
-            </Grid>
-
-          </MuiThemeProvider>
+  render() {
+    const { city } = this.state;
+    return ( 
+    	<MuiThemeProvider>
+        <Grid>
+          <Row>
+            <Col xs={12}>
+              <AppBar title='Weather Location'/>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12} md={6}>  
+              <LocationListContainer cities = { cities }>
+              </LocationListContainer>
+            </Col>
+            <Col xs={12} md={6}>
+              <Paper zDepth={4}>
+                <div className = 'detail'>
+                  <ForecastExtendedContainer>
+                    
+                  </ForecastExtendedContainer>
+                </div>
+              </Paper>
+            </Col>
+          </Row>
+        </Grid>
+      </MuiThemeProvider>
 
           /*<MuiThemeProvider>
         		<div className = "App" >
@@ -87,11 +69,10 @@ constructor() {
         );
     }
 }
-// esta función nos deja trabajar con las acciones
-const mapDispacthToPropsActions = (dispatch) => ({
-  setCity: value => dispatch(setCity(value))
-});
+// App.propTypes = {
+//  setCity : PropTypes.func.isRequired,
+// }
 
-const AppConnected = connect(null, mapDispacthToPropsActions)(App);
+// connect toma lo que estan haciendo las dos funcionesy lo lleva a app
+export default App;
 
-export default AppConnected;
