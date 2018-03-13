@@ -23,14 +23,14 @@ const cities = [
 
 
 class App extends Component {
-constructor() {
+/*constructor() {
   super();
   this.state = {
     city : null
   }
-}
+}*/
   render() {
-    const { city } = this.state;
+    //const { city } = this.state;
     return ( 
     	<MuiThemeProvider>
         <Grid>
